@@ -1,7 +1,0 @@
-{
-  "command": "node 03-agent/run-agent.mjs",
-  "exit_code": 0,
-  "stdout": "{\n  \"runs\": [\n    {\n      \"max_steps\": 3,\n      \"tool_calls\": 3,\n      \"read_sources\": 2,\n      \"score\": 1,\n      \"final_state_pass\": false,\n      \"agent_called_validator\": false\n    },\n    {\n      \"max_steps\": 6,\n      \"tool_calls\": 6,\n      \"read_sources\": 3,\n      \"score\": 5,\n      \"final_state_pass\": true,\n      \"agent_called_validator\": true\n    }\n  ],\n  \"negative_controls\": \"PASS\"\n}\n",
-  "stderr": "",
-  "executed_at": "2026-11-19T02:44:49.443Z"
-}

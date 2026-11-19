@@ -1,3 +1,0 @@
-{"call_id":"call-1","step":1,"tool":"search","args":{"query":"alignment"},"controller":"deterministic_state_machine"}
-{"call_id":"call-2","step":2,"tool":"read_source","args":{"id":"S1"},"controller":"deterministic_state_machine"}
-{"call_id":"call-3","step":3,"tool":"read_source","args":{"id":"S2"},"controller":"deterministic_state_machine"}

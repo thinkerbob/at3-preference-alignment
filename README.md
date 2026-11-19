@@ -1,11 +1,16 @@
-# AT4: 偏好對齊的可重現機制分析與研究簡報 Agent 審計
+# Preference Alignment Experiments
 
-課程：數據科學前沿分析研究。前沿方向：大型語言模型偏好對齊。
+研究偏好优化的数值机制与离线工具流程的证据完整性。
 
-`paper.pdf` 為期末整合論文。研究包括五篇核心方法比較、DPO 目標函數簡化復現、十二組 β/反向標籤權重敏感度實驗，以及研究簡報工具流程的三步／六步比較。十篇文獻見論文。
+## 实验
 
-## 環境與重跑
-實測 Windows + Node.js v24.22.3；Node.js 18+，無 npm 依賴、GPU 或 API 金鑰。從倉庫根目錄執行：
+- DPO：四个独立双动作 softmax 策略，包含 margin、有限差分梯度检查及200步优化。
+- 敏感度：β={0,0.1,0.5,1}，反向偏好权重 q={0,0.1,0.3}，共12组。
+- 工具流程：比较3步和6步预算，保存来源读取、简报、校验与负向测试记录。
+
+## 环境与运行
+
+Node.js 18+，实测 v24.22.3。只使用标准库，无 npm/Python 依赖、GPU 或模型 API。
 
 ```sh
 node src/dpo.mjs
@@ -14,25 +19,21 @@ node src/agent/run-agent.mjs
 node src/agent/validator.mjs src/agent/runs/max_steps_6
 ```
 
-前兩項寫入 `results/`；Agent 軌跡、評分及負向測試寫入 `src/agent/runs/` 和 `src/agent/evaluation.csv`。重跑 Agent 會覆寫自己管理的已知結果檔案。無隨機採樣，無需種子。
+DPO 和敏感度结果保存在 `results/`。工具轨迹保存在 `src/agent/runs/`，比较汇总见 `src/agent/evaluation.csv`。重跑会覆盖程序管理的结果文件。所有实验均为确定性计算。
 
-## 結果與檢查
-- DPO：200 更新，β=0.5；loss 0.693147 → 0.042524；梯度誤差約 5.87e-11。
-- 敏感度：β={0,0.1,0.5,1}，q={0,0.1,0.3}，共12組。q 是反向偏好的確定性權重；不是抽樣噪聲。CSV 保存每步結果及平均 KL。
-- Agent：3步讀2源、1/5分、未產出簡報；6步讀3源、5/5分、完成預算內校驗。兩個破壞性引用／血緣反例被拒絕。
+## 结果
 
-## 範圍與限制
-這是四個獨立雙動作 softmax 的目標函數復現，不是 LLM 微調或原論文 benchmark。Agent 是確定性規則控制器與固定模板，不是 LLM Agent；三步／六步對照有構造性。自建來源卡、契約與 validator 不是教師提供材料。驗證器只檢查固定命題及引用血緣，不能保證任意文字真實。不得將本文數字描述為人類偏好勝率。
+基准损失由0.693147降至0.042524，梯度误差约5.87e-11。三步流程读取2源、评分1/5；六步流程读取3源并完成简报与校验、评分5/5。
 
-## 檔案
-- `src/dpo.mjs`：手算 margin、有限差分梯度及 DPO 更新。
-- `src/sensitivity.mjs`：參數與標籤權重對照。
-- `src/agent/`：來源卡、契約、工具、控制器與完整紀錄。
-- `results/`：原始 CSV/JSON 與圖表。
-- `paper-content.json`：論文可編輯內容。
-- `src/build_paper.py`：PDF 生成與版面檢查。
-- `presentation-notes.md`：10分鐘展示與5分鐘答辯提綱。
+## 方法范围
 
-重建 PDF（可選）：Windows 安裝 Microsoft JhengHei 字型，`python -m pip install -r requirements.txt` 後執行 `python src/build_paper.py`。此步才需要 Python 套件；實驗不需要 Python。
+本项目复现有限动作策略的 DPO 目标函数，不包含语言模型微调。q 为确定性反向偏好权重，不是实测标注错误率。工具控制器采用规则与固定模板，不执行 LLM 推理。校验器检查结构与引用血缘，不保证任意自然语言命题的真实性。来源卡保留原论文链接与 AI 辅助整理的来源记录。
 
-倉庫保留原 AT3 材料作歷史證據，AT4 以本 README 的 `src/` 與 `paper.pdf` 為準。倉庫為私有，提交時須給教師存取權。成果使用 AI 協助整理與製作，數值來自實際執行。
+## 目录
+
+- `src/dpo.mjs`：DPO 优化与数值检查。
+- `src/sensitivity.mjs`：参数与偏好权重对照。
+- `src/agent/`：工具流程、来源和完整运行记录。
+- `results/`：CSV、JSON与结果图。
+
+论文与 PDF 文件不纳入仓库。
