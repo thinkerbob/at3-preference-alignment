@@ -14,7 +14,7 @@
     "S2",
     "S3"
   ],
-  "characters": 814,
+  "characters": 809,
   "audit_type": "structural; not a semantic or teacher validator",
   "agent_called_validator": true,
   "external_audit": true

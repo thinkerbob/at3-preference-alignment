@@ -34,7 +34,7 @@ function run(maxSteps){
         const brief='# 研究簡報：偏好對齊中的參考模型依賴\n\n'+
           '目的：整理三種直接偏好方法，為低資源復現選擇可核對的切入點。\n\n'+
           read.map(s=>`- ${s.claims[0].text} [${s.id}:${s.claims[0].id}]`).join('\n')+
-          '\n\n## 建議（本作業的分析）\n先復現 DPO 核心目標並核對梯度，再比較其他目標。這是基於可驗證性的實驗選擇，不代表 DPO 在所有任務最佳。偏好訓練與來源證據校驗應分開評估。\n\n## 限制\n來源為 AI 輔助整理的離線中文摘要卡，並非原論文全文。此簡報由固定模板與規則控制器產生，沒有執行 LLM 推理或比較模型性能。\n\n## 引用定位\n'+
+          '\n\n## 分析與建議\n先復現 DPO 核心目標並核對梯度，再比較其他目標。這是基於可驗證性的實驗選擇，不代表 DPO 在所有任務最佳。偏好訓練與來源證據校驗應分開評估。\n\n## 限制\n來源為 AI 輔助整理的離線中文摘要卡，並非原論文全文。此簡報由固定模板與規則控制器產生，沒有執行 LLM 推理或比較模型性能。\n\n## 引用定位\n'+
           read.map(s=>`- ${s.id}: ${s.title}；${s.locator}；[原文](${s.url})。`).join('\n')+'\n';
         save(path.join(dir,'final-brief.md'),brief);written=true;result={path:'final-brief.md',characters:brief.length};
       }else {result=validate(dir);completed=result.pass;}
@@ -45,7 +45,7 @@ function run(maxSteps){
   const audit=validate(dir);
   save(path.join(dir,'validation.json'),{...audit,agent_called_validator:completed,external_audit:true});
   save(path.join(dir,'provenance.json'),{runtime:process.version,controller:'self-authored deterministic tool loop',source_pack:'AI-assisted paraphrase cards verified against original publications in prior research',teacher_fixture:false,model_used:false,api_used:false,network_used_during_run:false,ai_assisted_authoring:true,max_steps:maxSteps,hashes});
-  save(path.join(dir,'error-note.md'),audit.pass?'# Error note\n本地結構校驗通過；尚未經教師 validator 或人工語義審核。\n':'# Error note\n預算在 search 與兩次 read_source 後耗盡；第三來源未讀，簡報未寫，Agent 未呼叫 validator。不得把外部審核記為 Agent 工具調用。\n');
+  save(path.join(dir,'error-note.md'),audit.pass?'# Error note\n本地結構校驗通過；尚未經獨立人工語義審核。\n':'# Error note\n預算在 search 與兩次 read_source 後耗盡；第三來源未讀，簡報未寫，Agent 未呼叫 validator。不得把外部審核記為 Agent 工具調用。\n');
   return {max_steps:maxSteps,tool_calls:calls,read_sources:audit.read_sources.length,score:audit.score,final_state_pass:audit.pass,agent_called_validator:completed};
 }
 const rows=[run(3),run(6)];
@@ -60,3 +60,4 @@ save(path.join(checkDir,'final-brief.md'),good.replace('[S1:C1]','[S9:C1]'));ass
 save(path.join(checkDir,'final-brief.md'),good);save(path.join(checkDir,'tool-results.jsonl'),'');assert.equal(validate(checkDir).pass,false);
 save(path.join(root,'validator-tests.json'),{invalid_citation_rejected:true,unread_sources_rejected:true});
 console.log(JSON.stringify({runs:rows,negative_controls:'PASS'},null,2));
+

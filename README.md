@@ -36,4 +36,5 @@ DPO 和敏感度结果保存在 `results/`。工具轨迹保存在 `src/agent/ru
 - `src/agent/`：工具流程、来源和完整运行记录。
 - `results/`：CSV、JSON与结果图。
 
-论文与 PDF 文件不纳入仓库。
+
+
