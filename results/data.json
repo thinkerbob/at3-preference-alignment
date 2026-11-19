@@ -1,0 +1,42 @@
+[
+  {
+    "id": "pair-1",
+    "prompt": "Synthetic prompt 1",
+    "chosen": "preferred action",
+    "rejected": "other action",
+    "reference": [
+      0.3,
+      0.7
+    ]
+  },
+  {
+    "id": "pair-2",
+    "prompt": "Synthetic prompt 2",
+    "chosen": "preferred action",
+    "rejected": "other action",
+    "reference": [
+      0.4,
+      0.6
+    ]
+  },
+  {
+    "id": "pair-3",
+    "prompt": "Synthetic prompt 3",
+    "chosen": "preferred action",
+    "rejected": "other action",
+    "reference": [
+      0.6,
+      0.4
+    ]
+  },
+  {
+    "id": "pair-4",
+    "prompt": "Synthetic prompt 4",
+    "chosen": "preferred action",
+    "rejected": "other action",
+    "reference": [
+      0.7,
+      0.30000000000000004
+    ]
+  }
+]

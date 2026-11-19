@@ -1,0 +1,27 @@
+{
+  "runtime": "v24.22.3",
+  "beta": 0.5,
+  "learning_rate": 1,
+  "steps": 200,
+  "samples": 4,
+  "initial": {
+    "step": 0,
+    "loss": 0.6931471805599454,
+    "mean_margin": -6.938893903907228e-18,
+    "mean_chosen_probability": 0.49999999999999994,
+    "train_accuracy": 0.5
+  },
+  "final": {
+    "step": 200,
+    "loss": 0.042523910588818735,
+    "mean_margin": 3.1363514598802475,
+    "mean_chosen_probability": 0.9976821795009376,
+    "train_accuracy": 1
+  },
+  "gradient_check": {
+    "numerical": -0.3053196170332839,
+    "analytical": -0.305319616974611,
+    "absolute_error": 5.867289987193658e-11
+  },
+  "checks_passed": true
+}

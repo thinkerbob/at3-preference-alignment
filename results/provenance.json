@@ -1,0 +1,11 @@
+{
+  "experiment": "finite-action DPO objective reproduction",
+  "data_origin": "author-created synthetic pairs",
+  "api_used": false,
+  "language_model_used": false,
+  "trainable_model": "two-action tabular softmax policy",
+  "teacher_fixture_used": false,
+  "seed": null,
+  "deterministic": true,
+  "code": "../run.mjs"
+}

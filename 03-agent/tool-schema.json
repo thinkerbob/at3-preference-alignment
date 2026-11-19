@@ -1,0 +1,9 @@
+{
+  "origin": "self-authored",
+  "tools": [
+    {"name": "search", "description": "Return ids and titles of source cards whose keywords match the query; does not read their claim text.", "parameters": {"type": "object", "properties": {"query": {"type": "string"}}, "required": ["query"], "additionalProperties": false}},
+    {"name": "read_source", "description": "Read one source by id returned from search. Returns source claims and original-paper attribution.", "parameters": {"type": "object", "properties": {"id": {"type": "string"}}, "required": ["id"], "additionalProperties": false}},
+    {"name": "write_brief", "description": "Compose a fixed research-brief template using exactly three source cards already read. Writes only final-brief.md in the active run directory.", "parameters": {"type": "object", "properties": {}, "additionalProperties": false}},
+    {"name": "validate", "description": "Check actual final file and recorded observations against the shared structural rubric. Does not evaluate arbitrary semantic entailment.", "parameters": {"type": "object", "properties": {}, "additionalProperties": false}}
+  ]
+}

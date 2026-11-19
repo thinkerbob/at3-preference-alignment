@@ -1,0 +1,7 @@
+{
+  "command": "node run.mjs",
+  "exit_code": 0,
+  "stdout": "{\n  \"runtime\": \"v24.22.3\",\n  \"beta\": 0.5,\n  \"learning_rate\": 1,\n  \"steps\": 200,\n  \"samples\": 4,\n  \"initial\": {\n    \"step\": 0,\n    \"loss\": 0.6931471805599454,\n    \"mean_margin\": -6.938893903907228e-18,\n    \"mean_chosen_probability\": 0.49999999999999994,\n    \"train_accuracy\": 0.5\n  },\n  \"final\": {\n    \"step\": 200,\n    \"loss\": 0.042523910588818735,\n    \"mean_margin\": 3.1363514598802475,\n    \"mean_chosen_probability\": 0.9976821795009376,\n    \"train_accuracy\": 1\n  },\n  \"gradient_check\": {\n    \"numerical\": -0.3053196170332839,\n    \"analytical\": -0.305319616974611,\n    \"absolute_error\": 5.867289987193658e-11\n  },\n  \"checks_passed\": true\n}\n",
+  "stderr": "",
+  "executed_at": "2026-11-19T02:44:49.306Z"
+}
