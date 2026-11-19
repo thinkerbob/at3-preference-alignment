@@ -1,0 +1,5 @@
+# Experiments use Node.js >=18 standard library only (no pip packages).
+# Optional PDF rebuild on Windows with Microsoft JhengHei fonts:
+reportlab==4.4.9
+pypdfium2>=4
+Pillow>=10

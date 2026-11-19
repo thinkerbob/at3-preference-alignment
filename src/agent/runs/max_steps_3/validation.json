@@ -1,0 +1,20 @@
+{
+  "criteria": {
+    "searched_pack": true,
+    "read_three": false,
+    "brief_present": false,
+    "citations_supported_by_read_sources": false,
+    "scope_and_length": false
+  },
+  "score": 1,
+  "max_score": 5,
+  "pass": false,
+  "read_sources": [
+    "S1",
+    "S2"
+  ],
+  "characters": 0,
+  "audit_type": "structural; not a semantic or teacher validator",
+  "agent_called_validator": false,
+  "external_audit": true
+}

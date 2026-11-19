@@ -1,0 +1,18 @@
+{
+  "runtime": "v24.22.3",
+  "controller": "self-authored deterministic tool loop",
+  "source_pack": "AI-assisted paraphrase cards verified against original publications in prior research",
+  "teacher_fixture": false,
+  "model_used": false,
+  "api_used": false,
+  "network_used_during_run": false,
+  "ai_assisted_authoring": true,
+  "max_steps": 6,
+  "hashes": {
+    "sources.json": "5c449c084e596e8cc8a4f39dcc22cd944c6a577e498af0756c70c30353dea898",
+    "task-contract.json": "804254e848aa0b827daeccce8682467db609323e0041a3ed68dd64e7bd152239",
+    "tool-schema.json": "6820788e125e62e83d7b1846643ff4feb628169324956b10dc29ca626fae22e5",
+    "validator.mjs": "2a8ca855945ca836975e05853e745ba89dba569a84994cd89818c2e6c0ed76a2",
+    "run-agent.mjs": "784aed265043ec12dfd03432205b73dc91e606e67a6f58af1adda6de44792c21"
+  }
+}

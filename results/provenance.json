@@ -7,5 +7,5 @@
   "teacher_fixture_used": false,
   "seed": null,
   "deterministic": true,
-  "code": "../run.mjs"
+  "code": "../src/dpo.mjs"
 }

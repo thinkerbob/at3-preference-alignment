@@ -1,0 +1,9 @@
+{
+  "runtime": "v24.22.3",
+  "steps": 200,
+  "learning_rate": 1,
+  "n": 4,
+  "q": "deterministic fractional reversed-label weight, not sampled human annotations",
+  "randomness": false,
+  "checks_passed": true
+}
